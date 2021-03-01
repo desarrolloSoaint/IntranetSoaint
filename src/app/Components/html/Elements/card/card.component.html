@@ -1,0 +1,89 @@
+<div class="container h-100">
+    <div class="row justify-content-md-center h-100">
+        <div class="card-wrapper shadow-lg p-0 bg-gray rounded">
+            <div class="card fat">
+                <div class="card-body">
+                    <div class="mb-5">
+                        <app-title [data]="title" class="card-title text-center"></app-title>
+                    </div>
+                    <div *ngIf=" title == 'Registro' ">
+                        <form #RegisterForm=ngForm (ngSubmit)="onSubmit()" class="form-validation">
+
+                            <div class="alert alert-danger" [hidden]="!error.email">{{error.email}}</div>
+                            <div class="alert alert-danger" [hidden]="!error.password">{{error.password}}</div>
+
+                            <div *ngIf="inputs">
+                                <div *ngFor="let input of inputs" class="form-group text-center mt-4 mb-4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><mdb-icon fas icon="{{input.icon}}"></mdb-icon></span>
+                                        </div>
+                                        <app-input-text [data] = "input"></app-input-text>
+                                        <div *ngIf="input.type == 'password'">
+                                            <small class="form-text text-muted">
+                                                Debe tener minimo 6 caracteres.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="selects">
+                            <div *ngFor="let select of selects" class="form-group text-center mt-4 mb-4">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><mdb-icon fas icon="{{select.icon}}"></mdb-icon></span>
+                                    </div>
+                                    <app-select [data]="select"></app-select>
+                                </div>
+                            </div>
+                            </div>
+                            
+                            <div *ngIf="button">
+                                <div class="form-group m-0 mt-3 text-center">
+                                    <app-submit-button [data]="button"></app-submit-button>
+                                </div>
+                            </div>
+    
+                            <div class="mt-3 text-center text-muted">
+                                Inicia Sesion | <a [routerLink]="['/login']">Login</a>
+                            </div>
+    
+                        </form>
+                    </div>
+
+                    <div *ngIf=" title == 'Inicio de Sesion' ">
+                        <form #LoginForm=ngForm (ngSubmit)="onSubmit()" class="form-validation">
+
+                            <div class="alert alert-danger" [hidden]="!error.message">{{error.message}}</div>
+
+                            <div *ngIf="inputs">
+                                <div *ngFor="let input of inputs" class="form-group text-center mt-4 mb-4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><mdb-icon fas icon="{{input.icon}}"></mdb-icon></span>
+                                        </div>
+                                        <app-input-text [data] = "input"></app-input-text>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="form-group m-0 mt-3 text-center">
+                                <app-submit-button [data]="button"></app-submit-button>
+                            </div>
+    
+                            <div class="mt-3 text-center text-muted">
+                                Nuevo Usuario | <a [routerLink]="['/register']">Registrate</a>
+                            </div>
+
+                            <div class="mt-1 text-center text-muted">
+                                Olvido la Contraseña | <a href="">Recuperar</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>

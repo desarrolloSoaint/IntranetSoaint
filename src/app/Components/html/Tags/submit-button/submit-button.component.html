@@ -1,0 +1,11 @@
+<div *ngIf=" data.title == 'Eliminar'">
+    <button type="submit" class="btn btn-danger {{data.size}} rounded-pill">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+
+<div *ngIf=" data.title != 'Eliminar'">
+    <button type="submit" class="btn btn-primary {{data.size}} rounded-pill">
+        {{data.title}}
+    </button>
+</div>

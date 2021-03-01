@@ -1,0 +1,19 @@
+<div class="table-responsive-md shadow p-3 mb-5 bg-white rounded">
+    <table class="table table-hover table-responsive table-borderless w-auto">
+        <thead>
+            <tr>
+                <th *ngFor="let title of table.th" scope="col">{{title}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hora de Entrada</td>
+                <div *ngIf="table.crud">
+                    <td *ngFor="let title of crud_titles">
+                        <app-submit-button [data]="title"></app-submit-button>
+                    </td>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+</div>

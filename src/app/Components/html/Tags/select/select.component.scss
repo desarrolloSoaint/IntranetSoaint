@@ -1,0 +1,12 @@
+select{
+    width: 15em;
+    border-radius:0%;
+    border-color: rgb(209, 202, 202);
+    padding: 0.375em 0.75em;
+}
+
+@media (max-width:800px){
+    select {
+        width: 13em;
+    }
+}
