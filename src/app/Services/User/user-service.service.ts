@@ -14,7 +14,15 @@ export class UserServiceService {
     return this.httpClient.post(`${this.baseUrl}/login`,form);
   }
 
+  logout(){
+    return this.httpClient.post(`${this.baseUrl}/logout`,null);
+  }
+
   register(form:any){
     return this.httpClient.post(`${this.baseUrl}/register`,form);
+  }
+
+  getUserRole(body:any){
+    return this.httpClient.post(`${this.baseUrl}/getUserRole`,body);
   }
 }

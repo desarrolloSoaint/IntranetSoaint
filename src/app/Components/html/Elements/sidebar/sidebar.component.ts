@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { TokenService } from 'src/app/Services/Token/token.service';
+import { UserServiceService } from 'src/app/Services/User/user-service.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,10 +10,14 @@ import { TokenService } from 'src/app/Services/Token/token.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  
   user: any;
+  role: any = {}
+  body: any;
 
   constructor(private authService: AuthService,
               private router: Router,
+              private userService: UserServiceService,
               private tokenService: TokenService) { }
 
   ngOnInit(): void {
@@ -21,13 +26,22 @@ export class SidebarComponent implements OnInit {
 
   logout(event: MouseEvent){
     event.preventDefault();
+    this.userService.logout();
     this.tokenService.remove();
     this.authService.changeAuthStatus(false);
     this.router.navigateByUrl('/login')
   }
 
-  getUser():void {
+  getUser(){
     this.user = JSON.parse(localStorage.getItem('user'));
+    this.body = {
+      email: this.user.email
+    };
+    
+    this.userService.getUserRole(this.body).subscribe(res=>{
+      this.role = res;
+      localStorage.setItem('role',this.role.type);
+    });    
   }
 
 }

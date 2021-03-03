@@ -30,6 +30,7 @@ export class TokenService {
   remove(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
   }
 
   isValid(){

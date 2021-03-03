@@ -32,12 +32,13 @@ import { MainMenuComponent } from './Views/main/main-menu/main-menu.component';
 
 // External
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { InterceptorService } from './Services/Interceptor/interceptor.service';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 // Services
 import { ClockService} from 'src/app/Services/Clock/clock.service';
+import { InterceptorService } from './Services/Interceptor/interceptor.service';
+import { AuthInterceptorService } from './Services/Interceptor/auth-interceptor.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -81,6 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true},
     ClockService
   ],
   bootstrap: [AppComponent]
