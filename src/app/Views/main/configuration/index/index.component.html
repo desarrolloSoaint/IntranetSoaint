@@ -1,0 +1,33 @@
+<div class="container">
+    <app-jumbotron [title]="'Horarios Activos'"></app-jumbotron>
+
+    <div class="col-md-12 text-center pt-4 pb-4">
+        <div class="btn-group">
+            <app-submit-button class="action" [data]="button.add" [routerLink]="['/main/configuration/schedules-table']"></app-submit-button>
+        </div>
+    </div>
+        
+    <div *ngIf="data.length == 0"> 
+        <p class="text-center">No hay reglas de momento</p>
+    </div>
+    <div *ngIf="data.length > 0">
+            <div id="no-more-tables" class="shadow p-3 mb-5 bg-white rounded">
+                <table class="table table-hover table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Reglas</th>
+                            <th class="text-center" scope="col">Hora Inicio</th>
+                            <th class="text-center" scope="col">Hora Fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let value of data">
+                            <td data-title="Nombre">{{value.name}}</td>
+                            <td data-title="Hra. Inicio" class="text-center">{{value.start_time}}</td>
+                            <td data-title="Hra. Fin" class="text-center">{{value.finish_time}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>

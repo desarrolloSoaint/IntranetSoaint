@@ -52,19 +52,19 @@ export class RegisterComponent implements OnInit {
 
   getRolesData():any{
     this.roleService.getRoles().subscribe(res=> {
-      this.roles = [{ data: res, title:"Roles", icon:"address-card"}]      
+      this.roles = [{ data: res, icon:"address-card"}]      
     });
   }
 
   onRegisterSubmit(){
     this.registerForm.email = this.dataService.getValue("email");
     this.registerForm.password = this.dataService.getValue("password");
-    this.registerForm.role_id = this.dataService.getValue("select")
+    this.registerForm.role_id = this.dataService.getValue("select");
+
     this.userService.register(this.registerForm).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
     );
-    console.log(this.registerForm);
   }
 
   handleResponse(data){

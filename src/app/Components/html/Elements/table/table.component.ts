@@ -8,9 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableComponent implements OnInit {
 
   @Input() table:any;
-  crud_titles:any
+  @Input() data:any;
+  public page = 1;
+  public pageSize = 5;
+  
   constructor() {
-    this.crud_titles = [{title : 'Ver'},{title : 'Modificar'},{title : 'Eliminar'}]
    }
 
   ngOnInit(): void {

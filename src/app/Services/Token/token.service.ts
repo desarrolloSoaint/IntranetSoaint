@@ -1,5 +1,5 @@
-import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 
 @Injectable({
@@ -12,7 +12,9 @@ export class TokenService {
     register : 'http://127.0.0.1:8000/api/register'
   }
 
-  constructor() { }
+  private baseUrl = 'http://127.0.0.1:8000/api';
+
+  constructor(private httpClient:HttpClient) { }
 
   handle(token,user){
     this.set(token,user);
@@ -21,6 +23,8 @@ export class TokenService {
   set(token,user){
     localStorage.setItem('token',token);
     localStorage.setItem('user',JSON.stringify(user));
+    const time_to_login = Date.now() + 86400000; // 24 hours
+    localStorage.setItem('timer', JSON.stringify(time_to_login));
   }
 
   get(){
@@ -52,6 +56,10 @@ export class TokenService {
 
   decode(payload){
     return JSON.parse(atob(payload));
+  }
+
+  refreshToken(){
+    return this.httpClient.post(`${this.baseUrl}/refreshToken`,null);
   }
 
   loggedIn(){

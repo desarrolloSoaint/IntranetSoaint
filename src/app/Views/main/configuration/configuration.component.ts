@@ -7,15 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfigurationComponent implements OnInit {
 
-  button: any;
-  table: any;
-
   constructor() { 
-    this.button = {title: "Agregar",size: "btn-lg"};
-    this.table = {
-      th:['Reglas'],
-      crud: true
-    }
   }
 
   ngOnInit(): void {

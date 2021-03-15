@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="card mt-4">
+        <div class="card-header text-center font-weight-bold">
+        Modificar Regla
+        </div>
+        <div class="card-body">
+
+            <div class="row justify-content-center">
+                <div class="alert alert-danger" [hidden]="!error.start_time">{{error.start_time}}</div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="alert alert-danger" [hidden]="!error.finish_time">{{error.finish_time}}</div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="alert alert-danger" [hidden]="!timeInvalid">{{timeInvalid}}</div>
+            </div>
+            
+            <form #UpdateScheduleForm=ngForm (ngSubmit)="onSubmit()" class="form-validation">
+                <div class="form-group row justify-content-center">
+                    <label for="hours" class="col-sm-6 col-form-label text-center font-weight-bold">Hora Inicio</label>
+                    <div class="col-sm-6">
+                        <input type="time" id="start" class="form-control" name="input_start" value="scheduleForm.start_time" [(ngModel)]="scheduleForm.start_time">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="hours" class="col-sm-6 col-form-label text-center font-weight-bold">Hora Fin</label>
+                    <div class="col-sm-6">
+                        <input type="time" id="finish" class="form-control" name="input_finish" value="scheduleForm.finish_time" [(ngModel)]="scheduleForm.finish_time">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center pt-3">
+                    <div class="col-sm-6 text-right pt-2">
+                        <app-submit-button [data]="button.update"></app-submit-button>
+                    </div>
+                    <div class="col-sm-6 text-left pt-2">
+                        <app-submit-button [data]="button.getBack" [routerLink]="['/main/configuration/schedules-table']"></app-submit-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

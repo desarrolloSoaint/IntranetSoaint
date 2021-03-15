@@ -44,4 +44,8 @@ export class SidebarComponent implements OnInit {
     });    
   }
 
+  isControlAccessView(){
+    return this.router.url.includes('/access-control/');
+  }
+
 }

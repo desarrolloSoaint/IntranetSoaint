@@ -7,15 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccessControlComponent implements OnInit {
 
-  button: any;
-  table: any;
-
   constructor() { 
-    this.button = {title: "Registrar",size: "btn-lg"};
-    this.table = {
-      th:['Fecha','Hora de Entrada'],
-      crud: false
-    }
   }
 
   ngOnInit(): void {

@@ -1,0 +1,84 @@
+.table {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.action {
+    padding: 0rem 0.5rem;
+}
+
+@media only screen and (max-width: 46.8rem) {
+
+	.text-left {
+		text-align: center !important;
+	}
+    
+	#no-more-tables table, 
+	#no-more-tables thead, 
+	#no-more-tables tbody, 
+	#no-more-tables th, 
+	#no-more-tables td, 
+	#no-more-tables tr { 
+		display: block; 
+	}
+ 
+	#no-more-tables thead tr { 
+		position: absolute;
+		top: -624.938rem;
+		left: -624.938rem;
+	}
+ 
+	#no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 16rem; 
+    }
+ 
+	#no-more-tables td { 
+		border: none;
+		border-bottom: 0.023rem solid rgb(240, 230, 230); 
+		position: relative;
+		padding-left: 50%; 
+		white-space: normal;
+		text-align:center;
+	}
+
+    #no-more-tables .button{ 
+		border: none;
+		border-bottom: 0.023rem solid rgb(240, 230, 230); 
+		position: relative;
+		padding: 1rem; 
+		white-space: normal;
+		text-align:center;
+	}
+ 
+	#no-more-tables td:before { 
+		position: absolute;
+		top: 0.8rem;
+		left: 0.375rem;
+		width: 50%; 
+		padding-right: 0.625rem; 
+		white-space: nowrap;
+		text-align:center;
+		font-weight: bold;
+	}
+
+    #no-more-tables{
+        padding: 0rem !important;
+    }
+ 
+	#no-more-tables td:before { content: attr(data-title); }
+}
+
+@media only screen and (max-width: 23.438rem) {
+    #no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 14rem; 
+    }
+}
+
+@media only screen and (max-width: 20.313rem) {
+    #no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 12rem; 
+    }
+}

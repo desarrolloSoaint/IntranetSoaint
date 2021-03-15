@@ -1,0 +1,20 @@
+<app-clock></app-clock>
+
+<div class="col-md-12 text-center pt-4 pb-4">
+    <div class="btn-group">
+        <app-submit-button class="action" (click)="registerStart()" [data]="button.start"></app-submit-button>
+        <app-submit-button class="action" (click)="registerFinish()" [data]="button.finish"></app-submit-button>
+    </div>
+</div>
+
+<div class="row justify-content-center" [hidden]="!message">
+    <div class="alert alert-danger">{{message}}</div>
+</div>
+
+<h1 class="h3 text-center">Historial de la Hora de Pausa Activa Diurna</h1>
+
+<div class="row justify-content-center">
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <app-table [table]="table" [data]=history></app-table>
+    </div>
+</div>

@@ -11,6 +11,7 @@
 
                             <div class="alert alert-danger" [hidden]="!error.email">{{error.email}}</div>
                             <div class="alert alert-danger" [hidden]="!error.password">{{error.password}}</div>
+                            <div class="alert alert-danger" [hidden]="!error.role_id">{{error.role_id}}</div>
 
                             <div *ngIf="inputs">
                                 <div *ngFor="let input of inputs" class="form-group text-center mt-4 mb-4">

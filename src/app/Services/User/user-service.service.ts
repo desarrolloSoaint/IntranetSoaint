@@ -25,4 +25,8 @@ export class UserServiceService {
   getUserRole(body:any){
     return this.httpClient.post(`${this.baseUrl}/getUserRole`,body);
   }
+
+  getUsers(){
+    return this.httpClient.get(`${this.baseUrl}/getUsers`);
+  }
 }

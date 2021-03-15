@@ -1,19 +1,17 @@
-<div class="table-responsive-md shadow p-3 mb-5 bg-white rounded">
-    <table class="table table-hover table-responsive table-borderless w-auto">
+<div *ngIf="data">
+    <table class="table table-hover table-borderless">
         <thead>
             <tr>
                 <th *ngFor="let title of table.th" scope="col">{{title}}</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Hora de Entrada</td>
-                <div *ngIf="table.crud">
-                    <td *ngFor="let title of crud_titles">
-                        <app-submit-button [data]="title"></app-submit-button>
-                    </td>
-                </div>
+            <tr *ngFor="let values of data | slice: (page-1) * pageSize : page * pageSize">
+                <td class="text-center">{{values.date}}</td>
+                <td class="text-center">{{values.start_time}}</td>
+                <td class="text-center">{{values.finish_time}}</td>
             </tr>
         </tbody>
     </table>
+    <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="data.length"></ngb-pagination>
 </div>

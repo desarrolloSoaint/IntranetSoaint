@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent,HttpResponse,HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router'
+import { TokenService } from '../Token/token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService {
 
-  constructor() { }
+  constructor(tokenService: TokenService) { }
   // Implementaciòn del metodo
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //Obtenemos el token del sessioStorage
@@ -25,7 +27,7 @@ export class AuthInterceptorService {
         }
       });
     }
-    return next.handle(request);
+    return next.handle(request)
   }
 }
 

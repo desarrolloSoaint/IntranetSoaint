@@ -1,0 +1,51 @@
+<div class="container">
+    <app-jumbotron [title]="'Lista de Horarios'"></app-jumbotron>
+
+    <div class="col-md-12 text-center pt-2 pb-4">
+        <div class="btn-group">
+            <app-submit-button class="action" [data]="button.add" [routerLink]="['/main/configuration/add-schedule']"></app-submit-button>
+            <app-submit-button class="action" [data]="button.back" [routerLink]="['/main/configuration']"></app-submit-button>
+        </div>
+    </div>
+
+    <div class=" description col-md-12 text-left pt-2 pb-2">
+        <div class="btn-group">
+            <app-submit-button class="action"  *ngIf="data.length != 0" [data]="button.show" (click)="showHide()"></app-submit-button>
+        </div>
+    </div>
+        
+    <div *ngIf="data.length == 0"> 
+        <p class="text-center">No hay horarios de momento</p>
+    </div>
+    <div *ngIf="data.length > 0">
+            <div id="no-more-tables" class="shadow p-3 mb-5 bg-white rounded">
+                <table class="table table-hover table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tipo</th>
+                            <th *ngIf="status" scope="col">Hora Inicio</th>
+                            <th *ngIf="status" scope="col">Hora Fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let value of data | slice: (page-1) * pageSize : page * pageSize">
+                            <td data-title="Nombre">{{value.name}}</td>
+                            <td data-title="Hra. Inicio" class="text-center" *ngIf="status">{{value.start_time}}</td>
+                            <td data-title="Hra. Fin" class="text-center" *ngIf="status">{{value.finish_time}}</td>
+                            <td class="button">
+                                <button *ngIf="value.status == 'Activo'" type="submit" class="btn btn-success rounded-pill">{{value.status}}</button>
+                                <button *ngIf="value.status == 'Inactivo'" (click)="changeScheduleStatus(value.id)" type="submit" class="btn btn-secondary rounded-pill">{{value.status}}</button>
+                            </td>                    
+                            <td class="button">
+                                <app-submit-button [routerLink]="['/main/configuration/update-schedule',value.id]" [data]="crud_titles.update"></app-submit-button>
+                            </td>
+                            <td class="button">
+                                <app-submit-button [data]="crud_titles.delete" (click)="deleteScheduleData(value.id)"></app-submit-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="data.length"></ngb-pagination>
+            </div>
+    </div>
+</div>
