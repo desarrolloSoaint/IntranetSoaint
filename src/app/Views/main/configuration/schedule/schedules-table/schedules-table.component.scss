@@ -7,10 +7,18 @@
     padding: 0rem 0.5rem;
 }
 
+.status{
+	width: 5rem;
+}
+
 @media only screen and (max-width: 46.8rem) {
 
 	.text-left {
 		text-align: center !important;
+	}
+
+	.status{
+		width: 8rem;
 	}
     
 	#no-more-tables table, 
@@ -67,6 +75,42 @@
     }
  
 	#no-more-tables td:before { content: attr(data-title); }
+}
+
+@media only screen and (max-width: 47rem) {
+    #no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 23rem; 
+    }
+}
+
+@media only screen and (max-width: 36.125rem) {
+    #no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 23rem; 
+    }
+}
+
+@media only screen and (max-width: 32.563rem) {
+    #no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 20rem; 
+    }
+}
+
+
+@media only screen and (max-width: 30.625rem) {
+    #no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 19rem; 
+    }
+}
+
+@media only screen and (max-width: 27rem) {
+    #no-more-tables tr { 
+        border: 0.063rem solid #ccc;
+        width: 16rem; 
+    }
 }
 
 @media only screen and (max-width: 23.438rem) {

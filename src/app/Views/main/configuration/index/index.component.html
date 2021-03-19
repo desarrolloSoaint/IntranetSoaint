@@ -1,16 +1,16 @@
 <div class="container">
     <app-jumbotron [title]="'Horarios Activos'"></app-jumbotron>
 
-    <div class="col-md-12 text-center pt-4 pb-4">
+    <div class="col-md-12 text-left pt-4 pb-4">
         <div class="btn-group">
             <app-submit-button class="action" [data]="button.add" [routerLink]="['/main/configuration/schedules-table']"></app-submit-button>
         </div>
     </div>
         
-    <div *ngIf="data.length == 0"> 
+    <!-- <div *ngIf="data.length == 0"> 
         <p class="text-center">No hay reglas de momento</p>
-    </div>
-    <div *ngIf="data.length > 0">
+    </div> -->
+    <div *ngIf="data.length > 0" class="mb-4">
             <div id="no-more-tables" class="shadow p-3 mb-5 bg-white rounded">
                 <table class="table table-hover table-borderless">
                     <thead>

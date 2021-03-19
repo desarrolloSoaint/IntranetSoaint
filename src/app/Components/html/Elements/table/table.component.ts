@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  @Input() table:any;
   @Input() data:any;
   public page = 1;
   public pageSize = 5;

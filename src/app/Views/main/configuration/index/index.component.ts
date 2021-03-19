@@ -15,7 +15,7 @@ export class IndexComponent implements OnInit {
 
   constructor(private scheduleService: ScheduleService) { 
     this.button = {
-      add:  {title: "Ver Lista de Horarios",size: "btn-block"},
+      add:  {title: "Ver Lista",size: "btn-block"},
       show: {title: "Descripción",size: "btn-block"},
     }
     this.crud_titles = {

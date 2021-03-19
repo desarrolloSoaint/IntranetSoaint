@@ -9,37 +9,43 @@ import { AccessControlService } from 'src/app/Services/AccessControl/access-cont
 export class EntryTimeComponent implements OnInit {
 
   button: any;
-  table: any;
   body:any;
   message:string;
+  observation:boolean = false;
   history :any;
   data = {
     user_id: null,
     rule_name : "Horario de Trabajo"
   }
+  data_observation = {
+    user_id: null,
+    rule_name : "Horario de Trabajo",
+    text:null
+  }
 
   constructor(private accessService: AccessControlService) { 
     this.button = {
-      entry:  {title: "Hora de Entrada"},
-      leave:  {title: "Hora de Salida"},
-    }
-    this.table = {
-      th:['Fecha','Hora de Entrada','Hora de Salida']
+      entry:  {title: "Hora Entrada"},
+      leave:  {title: "Hora Salida"},
     }
   }
 
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
-    this.data.user_id = user.id;
-    this.accessService.getCurrentUserHistory(this.data).subscribe(res=> {
-      this.history = res      
-    });
+    if(user){
+      this.data.user_id = user.id;
+      this.data_observation.user_id = user.id;
+      this.accessService.getCurrentUserHistory(this.data).subscribe(res=> {
+        this.history = res      
+      });
+    }
   }
 
   registerEntry(){
     this.accessService.registerStart(this.data).subscribe(res=>{
       this.body = res;
       this.message = this.body.message;
+      this.observation = this.body.observation;
       this.ngOnInit();
     })
   }
@@ -48,6 +54,16 @@ export class EntryTimeComponent implements OnInit {
     this.accessService.registerFinish(this.data).subscribe(res=>{
       this.body = res;
       this.message = this.body.message;
+      this.observation = this.body.observation;
+      this.ngOnInit();
+    })
+  }
+
+  addObservation(){
+    this.accessService.addObservation(this.data_observation).subscribe(res=>{
+      this.body = res;
+      this.message = this.body.message;
+      this.observation = false;      
       this.ngOnInit();
     })
   }

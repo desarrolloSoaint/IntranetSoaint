@@ -9,7 +9,6 @@ import { AccessControlService } from 'src/app/Services/AccessControl/access-cont
 export class ActiveAfternoonPauseComponent implements OnInit {
 
   button: any;
-  table: any;
   body:any;
   message:string;
   history :any;
@@ -23,17 +22,16 @@ export class ActiveAfternoonPauseComponent implements OnInit {
       start:  {title: "Hora Inicio"},
       finish:  {title: "Hora Fin"},
     }
-    this.table = {
-      th:['Fecha','Hora Inicio','Hora Fin']
-    }
   }
 
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
-    this.data.user_id = user.id;
-    this.accessService.getCurrentUserHistory(this.data).subscribe(res=> {
-      this.history = res   
-    });
+    if(user){
+      this.data.user_id = user.id;
+      this.accessService.getCurrentUserHistory(this.data).subscribe(res=> {
+        this.history = res   
+      });
+    }
   }
 
   registerStart(){

@@ -9,13 +9,18 @@ import { AccessControlService } from 'src/app/Services/AccessControl/access-cont
 export class LunchTimeComponent implements OnInit {
   
   button: any;
-  table: any;
   body:any;
   message:string;
+  observation:boolean = false;
   history :any;
   data = {
-    user_id:null,
+    user_id: null,
     rule_name : "Horario de Almuerzo"
+  }
+  data_observation = {
+    user_id: null,
+    rule_name : "Horario de Almuerzo",
+    text:null
   }
 
   constructor(private accessService: AccessControlService) { 
@@ -23,30 +28,42 @@ export class LunchTimeComponent implements OnInit {
       start:  {title: "Hora Inicio"},
       finish:  {title: "Hora Fin"},
     }
-    this.table = {
-      th:['Fecha','Hora Inicio','Hora Fin']
-    }
   }
 
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
-    this.data.user_id = user.id;
-    this.accessService.getCurrentUserHistory(this.data).subscribe(res=> {
-      this.history = res   
-    });
+    if(user){
+      this.data.user_id = user.id;
+      this.data_observation.user_id = user.id;
+      this.accessService.getCurrentUserHistory(this.data).subscribe(res=> {
+        this.history = res      
+      });
+    }
   }
 
   registerStart(){
     this.accessService.registerStart(this.data).subscribe(res=>{
       this.body = res;
       this.message = this.body.message;
+      this.observation = this.body.observation;
       this.ngOnInit();
     })
   }
+
   registerFinish(){
     this.accessService.registerFinish(this.data).subscribe(res=>{
       this.body = res;
       this.message = this.body.message;
+      this.observation = this.body.observation;
+      this.ngOnInit();
+    })
+  }
+
+  addObservation(){
+    this.accessService.addObservation(this.data_observation).subscribe(res=>{
+      this.body = res;
+      this.message = this.body.message;
+      this.observation = false;      
       this.ngOnInit();
     })
   }

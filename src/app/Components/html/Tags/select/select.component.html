@@ -1,5 +1,7 @@
 
     <select #select class="form-select" (change)="setSelectValue(select.value)">
         <option hidden selected>Escoge...</option>
-        <option *ngFor="let values of data.data" [value]="values.id">{{values.type}}</option>
+        <ng-container *ngIf="data">
+            <option *ngFor="let values of data.data" [value]="values.id">{{values.type}}</option>
+        </ng-container>
     </select>

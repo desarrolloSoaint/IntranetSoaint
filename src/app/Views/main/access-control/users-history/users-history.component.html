@@ -2,7 +2,7 @@
 
     <div class="form-group row justify-content-center mt-3">
         
-        <label for="user" class="col-sm-2 col-form-label text-center font-weight-bold">Filtrar por Usuario:</label>
+        <label for="user" class="col-sm-2 col-form-label text-center font-weight-bold">Buscar:</label>
         <div class="col-sm-6">
             <input type="text" class="form-control" name="user_email" [(ngModel)]="user_filter" (ngModelChange)="search()"
                 placeholder="Escriba el email del usuario">
@@ -21,29 +21,33 @@
         <h1>No hay registros en el historial</h1>
     </div>
 
-    <div *ngIf="data.length > 0" class="row justify-content-center">
-        <div class="shadow p-3 mb-5 bg-white rounded table-responsive">
-            <table class="table table-hover table-borderless">
-                <thead>
-                    <tr>
-                        <th class="text-center" scope="col">Fecha</th>
-                        <th class="text-center" scope="col">Usuario</th>
-                        <th class="text-center" scope="col">Horario</th>
-                        <th class="text-center" scope="col">Inicio</th>
-                        <th class="text-center" scope="col">Fin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let value of data | slice: (page-1) * pageSize : page * pageSize">
-                        <td class="text-center">{{value.date}}</td>
-                        <td class="text-center">{{value.email}}</td>
-                        <td class="text-center">{{value.name}}</td>
-                        <td class="text-center">{{value.start_time}}</td>
-                        <td class="text-center">{{value.finish_time}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="data.length"></ngb-pagination>
+    <div class="row">
+        <div class="col-12">
+            <div *ngIf="data.length > 0" class="shadow mb-2 table-responsive history">
+                <table class="table table-hover table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">Fecha</th>
+                            <th class="text-center" scope="col">Usuario</th>
+                            <th class="text-center" scope="col">Horario</th>
+                            <th class="text-center" scope="col">Inicio</th>
+                            <th class="text-center" scope="col">Fin</th>
+                            <th class="text-center" scope="col">Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let value of data | slice: (page-1) * pageSize : page * pageSize">
+                            <td class="text-center text-truncate">{{value.date}}</td>
+                            <td class="text-center text-truncate">{{value.email}}</td>
+                            <td class="text-center text-truncate">{{value.name}}</td>
+                            <td class="text-center">{{value.start_time}}</td>
+                            <td class="text-center">{{value.finish_time}}</td>
+                            <td class="text-center text-truncate">{{value.observation}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="data.length"></ngb-pagination>
 </div>

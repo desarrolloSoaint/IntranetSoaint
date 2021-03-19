@@ -1,1 +1,9 @@
-<h1 class="mt-4">Pagina Principal</h1>
+<div class="container">
+    <div class="shadow text-center mt-4">
+        <img src="assets/img/main.png" class="img-fluid" alt="Responsive image">
+    </div>
+    <div *ngIf="role">
+        <app-admin-dashboard *ngIf="role.type == 'Administrador'"></app-admin-dashboard>
+        <app-user-dashboard *ngIf="role.type == 'Usuario'"></app-user-dashboard>
+    </div>
+</div>

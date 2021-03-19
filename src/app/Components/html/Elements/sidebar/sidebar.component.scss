@@ -1,9 +1,12 @@
-#sidebar-wrapper {
-   height: 100vh;
-   background-color: rgb(240, 233, 233);
-   margin-left: 0;
-  }
+.bg-color{
+  background-color: #00608f;
+}
 
+#sidebar-wrapper {
+  height: 100vh;
+  background-color: white;
+  margin-left: 0;
+}
 
 #sidebar-wrapper .sidebar-heading {
   padding: 0.875rem 1.25rem;
@@ -20,7 +23,9 @@
 }
 
 #page-content-wrapper {
-  min-width: 100vw;
+  background: rgb(241,237,237);
+  background: linear-gradient(90deg, rgba(241,237,237,1) 0%, rgba(248,248,255,1) 100%, rgba(255,255,255,1) 100%);
+  width: 100vw;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -29,6 +34,10 @@
 
 #container-fluid {
     background-color: #F0F3F8;
+}
+
+.list-group-item:hover{
+  background-color: rgb(236, 235, 235);
 }
 
 

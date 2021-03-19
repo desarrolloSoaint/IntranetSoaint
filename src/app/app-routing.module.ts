@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AfterLoginGuardService } from './Services/AfterLoginGuard/after-login-guard.service';
 import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
-import { RoleGuardService } from './Services/RoleGuard/role-guard.service';
+import { AdminGuardService } from './Services/AdminGuard/admin-guard.service';
 import { LoginComponent } from './Views/Auth/login/login.component';
 import { RegisterComponent } from './Views/Auth/register/register.component';
 import { AccessControlComponent } from './Views/main/access-control/access-control.component';
@@ -18,6 +18,7 @@ import { SchedulesTableComponent } from './Views/main/configuration/schedule/sch
 import { UpdateScheduleComponent } from './Views/main/configuration/schedule/update-schedule/update-schedule.component';
 import { MainMenuComponent } from './Views/main/main-menu/main-menu.component';
 import { MainComponent } from './Views/main/main.component';
+import { UserGuardService } from './Services/UserGuard/user-guard.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate:[AfterLoginGuardService]},
@@ -25,20 +26,21 @@ const routes: Routes = [
   { path: 'main', component: MainComponent,canActivate: [AuthGuardService],
     children: [
       { path: '', component:  MainMenuComponent,canActivate: [AuthGuardService]},
-      { path: 'configuration', component: ConfigurationComponent,canActivate: [RoleGuardService],
+      { path: 'configuration', component: ConfigurationComponent,canActivate: [AdminGuardService],
         children:[
-          { path: '', component:  IndexComponent,canActivate: [RoleGuardService]},
-          { path: 'schedules-table', component:  SchedulesTableComponent,canActivate: [RoleGuardService]},
-          { path: 'add-schedule', component: CreateScheduleComponent,canActivate: [RoleGuardService] },
-          { path: 'update-schedule/:id', component: UpdateScheduleComponent,canActivate: [RoleGuardService] },
+          { path: '', component:  IndexComponent,canActivate: [AdminGuardService]},
+          { path: 'schedules-table', component:  SchedulesTableComponent,canActivate: [AdminGuardService]},
+          { path: 'add-schedule', component: CreateScheduleComponent,canActivate: [AdminGuardService] },
+          { path: 'update-schedule/:id', component: UpdateScheduleComponent,canActivate: [AdminGuardService] },
         ]},
       { path: 'access-control', component: AccessControlComponent,canActivate: [AuthGuardService],
         children:[
-          { path: 'users-history', component:  UsersHistoryComponent,canActivate: [RoleGuardService]},
-          { path: 'entry-time', component:  EntryTimeComponent,canActivate: [AuthGuardService]},
-          { path: 'lunch-time', component:  LunchTimeComponent,canActivate: [AuthGuardService]},
-          { path: 'active-pause', component:  ActivePauseComponent,canActivate: [AuthGuardService]},
-          { path: 'active-afternoon-pause', component:  ActiveAfternoonPauseComponent,canActivate: [AuthGuardService]},
+          { path: '', component:  EntryTimeComponent,canActivate: [UserGuardService]},
+          { path: 'users-history', component:  UsersHistoryComponent,canActivate: [AdminGuardService]},
+          { path: 'entry-time', component:  EntryTimeComponent,canActivate: [UserGuardService]},
+          { path: 'lunch-time', component:  LunchTimeComponent,canActivate: [UserGuardService]},
+          { path: 'active-pause', component:  ActivePauseComponent,canActivate: [UserGuardService]},
+          { path: 'active-afternoon-pause', component:  ActiveAfternoonPauseComponent,canActivate: [UserGuardService]},
         ]}
   ]},
   { path: '',   redirectTo: '/login', pathMatch: 'full' }

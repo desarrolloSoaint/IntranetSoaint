@@ -20,7 +20,7 @@
                 <div class="alert alert-danger" [hidden]="!timeInvalid">{{timeInvalid}}</div>
             </div>
 
-            <form #CreateScheduleForm=ngForm (ngSubmit)="onSubmit()" class="form-validation">
+            <form #CreateScheduleForm (ngSubmit)="onSubmit()" class="form-validation">
                 <div class="form-group row justify-content-center">
                     <label for="type" class="col-sm-6 col-form-label text-center font-weight-bold">Tipo Horario:</label>
                     <div class="col-sm-6">

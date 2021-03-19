@@ -22,6 +22,8 @@ import { JumbotronComponent } from './Components/html/Tags/jumbotron/jumbotron.c
 import { CardComponent } from './Components/html/Elements/card/card.component';
 import { SidebarComponent } from './Components/html/Elements/sidebar/sidebar.component';
 import { TableComponent } from './Components/html/Elements/table/table.component';
+import { AdminDashboardComponent } from './Components/html/Elements/admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './Components/html/Elements/user-dashboard/user-dashboard.component';
 
 //Views
 import { LoginComponent } from './Views/Auth/login/login.component';
@@ -49,8 +51,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ClockService} from 'src/app/Services/Clock/clock.service';
 import { InterceptorService } from './Services/Interceptor/interceptor.service';
 import { AuthInterceptorService } from './Services/Interceptor/auth-interceptor.service';
-
-
+import { RefreshTokenInterceptorService } from './Services/Interceptor/refresh-token-interceptor.service';
 
 
 
@@ -86,6 +87,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UpdateScheduleComponent,
     ActiveAfternoonPauseComponent,
     UsersHistoryComponent,
+    AdminDashboardComponent,
+    UserDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,8 +108,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   })
   ],
   providers: [
+    HttpClient,
     {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass:RefreshTokenInterceptorService, multi:true},
     ClockService
   ],
   bootstrap: [AppComponent]

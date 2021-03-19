@@ -3,7 +3,10 @@
         <div class="card-wrapper shadow-lg p-0 bg-gray rounded">
             <div class="card fat">
                 <div class="card-body">
-                    <div class="mb-5">
+                    <div class="shadow text-center mb-5">
+                        <img src="assets/img/main.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="mb-3">
                         <app-title [data]="title" class="card-title text-center"></app-title>
                     </div>
                     <div *ngIf=" title == 'Registro' ">
@@ -14,7 +17,7 @@
                             <div class="alert alert-danger" [hidden]="!error.role_id">{{error.role_id}}</div>
 
                             <div *ngIf="inputs">
-                                <div *ngFor="let input of inputs" class="form-group text-center mt-4 mb-4">
+                                <div *ngFor="let input of inputs" class="form-group text-center">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><mdb-icon fas icon="{{input.icon}}"></mdb-icon></span>
@@ -53,7 +56,7 @@
                         </form>
                     </div>
 
-                    <div *ngIf=" title == 'Inicio de Sesion' ">
+                    <div *ngIf=" title == 'Inicio de Sesión' ">
                         <form #LoginForm=ngForm (ngSubmit)="onSubmit()" class="form-validation">
 
                             <div class="alert alert-danger" [hidden]="!error.message">{{error.message}}</div>

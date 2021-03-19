@@ -7,22 +7,22 @@
       </div>
       <ul class="list-unstyled components">
         <li>
-            <a *ngIf="!isControlAccessView()" [routerLink]="['/main/access-control/entry-time']" class="list-group-item list-group-item-action bg-light">Control de Acceso</a>
+            <a *ngIf="role.type == 'Administrador'" [routerLink]="['/main/access-control/users-history']" class="list-group-item list-group-item-action">Historial de Usuarios</a>
         </li>
         <li>
-            <a *ngIf="isControlAccessView() && role.type == 'Administrador'" [routerLink]="['/main/access-control/users-history']" class="list-group-item list-group-item-action bg-light">Historial de Usuarios</a>
+            <a *ngIf="!isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/entry-time']" class="list-group-item list-group-item-action">Control de Acceso</a>
         </li>
         <li>
-            <a *ngIf="isControlAccessView()" [routerLink]="['/main/access-control/entry-time']" class="list-group-item list-group-item-action bg-light">Hora de Entrada/Salida</a>
+            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/entry-time']" class="list-group-item list-group-item-action">Hora de Entrada/Salida</a>
         </li>
         <li>
-            <a *ngIf="isControlAccessView()" [routerLink]="['/main/access-control/lunch-time']" class="list-group-item list-group-item-action bg-light">Hora de Almuerzo</a>
+            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/lunch-time']" class="list-group-item list-group-item-action">Hora de Almuerzo</a>
         </li>
         <li>
-            <a *ngIf="isControlAccessView()" [routerLink]="['/main/access-control/active-pause']" class="list-group-item list-group-item-action bg-light">Pausa Activa Diurna</a>
+            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/active-pause']" class="list-group-item list-group-item-action">Pausa Activa Diurna</a>
         </li>
         <li>
-            <a *ngIf="isControlAccessView()" [routerLink]="['/main/access-control/active-afternoon-pause']" class="list-group-item list-group-item-action bg-light">Pausa Activa Tarde</a>
+            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/active-afternoon-pause']" class="list-group-item list-group-item-action">Pausa Activa Tarde</a>
         </li>
       </ul>
     </nav>
@@ -30,9 +30,9 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-info border-bottom">
-            <button class="btn btn-info" data-toggle="collapse" data-target="#sidebar-wrapper">
-                <mdb-icon fas icon="bars" size="lg"></mdb-icon>
+        <nav class="navbar navbar-expand-lg navbar-light bg-color border-bottom">
+            <button class="btn btn-color border border-primary" data-toggle="collapse" data-target="#sidebar-wrapper">
+                <mdb-icon class="text-white" fas icon="home" size="lg"></mdb-icon>
             </button>
 
             <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -48,7 +48,7 @@
                         <a class="nav-link text-white" [routerLink]="['/main/configuration']">Configuración</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a *ngIf="user" class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{user.email}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

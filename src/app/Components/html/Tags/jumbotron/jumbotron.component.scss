@@ -1,11 +1,17 @@
-@media (max-width: 450px) {
+@media (min-width: 576px) {
+    .jumbotron {
+    padding: 2rem 2rem;
+    }
+}
+
+@media (max-width: 745px) {
     .jumbotron h1 {
-        font-size: 3em;
+        font-size: 2em;
     }
 }
 
 @media (max-width: 400px) {
     .jumbotron h1 {
-        font-size: 2em;
+        font-size: 1.5em;
     }
 }

@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { URL_BACK } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RuleService {
 
-  private baseUrl = 'http://127.0.0.1:8000/api'
-
   constructor(private httpClient:HttpClient) { }
   
   getRules(){
-    return this.httpClient.get(`${this.baseUrl}/getRules`);
+    return this.httpClient.get(`${URL_BACK}/getRules`);
+  }
+
+  countOfRules(){
+    return this.httpClient.get(`${URL_BACK}/countOfRules`);
   }
 
   getRuleById(id){
-    return this.httpClient.get(`${this.baseUrl}/showRule/${id}`);
+    return this.httpClient.get(`${URL_BACK}/showRule/${id}`);
   }
 
 }

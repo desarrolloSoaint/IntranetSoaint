@@ -1,17 +1,21 @@
-<div *ngIf="data">
+<div *ngIf="data" class="shadow mb-2 table-responsive">
     <table class="table table-hover table-borderless">
         <thead>
             <tr>
-                <th *ngFor="let title of table.th" scope="col">{{title}}</th>
+                <th class="text-center" scope="col">Fecha</th>
+                <th class="text-center" scope="col">Inicio</th>
+                <th class="text-center" scope="col">Fin</th>
+                <th class="text-center" scope="col">Observación</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let values of data | slice: (page-1) * pageSize : page * pageSize">
-                <td class="text-center">{{values.date}}</td>
+                <td class="text-center text-truncate">{{values.date}}</td>
                 <td class="text-center">{{values.start_time}}</td>
                 <td class="text-center">{{values.finish_time}}</td>
+                <td class="text-center">{{values.observation}}</td>
             </tr>
         </tbody>
     </table>
-    <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="data.length"></ngb-pagination>
 </div>
+<ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="data.length"></ngb-pagination>

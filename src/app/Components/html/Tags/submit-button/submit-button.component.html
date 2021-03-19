@@ -1,11 +1,9 @@
-<div *ngIf=" data.title == 'Eliminar'">
-    <button type="submit" class="btn btn-danger {{data.size}} rounded-pill">
+<ng-container *ngIf="data">
+    <button *ngIf=" data.title == 'Eliminar'" type="submit" class="btn btn-danger {{data.size}} rounded-pill">
         {{data.title}}
     </button>
-</div>
 
-<div *ngIf=" data.title != 'Eliminar'">
-    <button type="submit" class="btn btn-primary {{data.size}} rounded-pill">
+    <button *ngIf=" data.title != 'Eliminar'" type="submit" class="btn btn-primary {{data.size}} rounded-pill">
         {{data.title}}
     </button>
-</div>
+</ng-container>

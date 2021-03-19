@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-
+import { URL_BACK } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http'
 export class TokenService {
 
   private iss = {
-    login: 'http://127.0.0.1:8000/api/login',
-    register : 'http://127.0.0.1:8000/api/register'
+    login: `${URL_BACK}/login`,
+    register : `${URL_BACK}/register`
   }
 
-  private baseUrl = 'http://127.0.0.1:8000/api';
+  // private baseUrl = 'http://127.0.0.1:8000/api';
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   handle(token,user){
     this.set(token,user);
@@ -23,7 +23,7 @@ export class TokenService {
   set(token,user){
     localStorage.setItem('token',token);
     localStorage.setItem('user',JSON.stringify(user));
-    const time_to_login = Date.now() + 86400000; // 24 hours
+    const time_to_login = Date.now() + 3600000  ; // 1 hour
     localStorage.setItem('timer', JSON.stringify(time_to_login));
   }
 
@@ -35,6 +35,7 @@ export class TokenService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('role');
+    localStorage.removeItem('timer');
   }
 
   isValid(){
@@ -59,7 +60,7 @@ export class TokenService {
   }
 
   refreshToken(){
-    return this.httpClient.post(`${this.baseUrl}/refreshToken`,null);
+    return this.httpClient.post(`${URL_BACK}/refreshToken`,null);
   }
 
   loggedIn(){

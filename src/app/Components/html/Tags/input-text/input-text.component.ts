@@ -8,7 +8,7 @@ import { DataService } from 'src/app/Services/Data/data.service';
 })
 export class InputTextComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data:any;
   public value:string;
 
   constructor(private dataService:DataService) { }

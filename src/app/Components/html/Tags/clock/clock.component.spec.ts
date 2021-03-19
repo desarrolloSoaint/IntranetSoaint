@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ClockService } from 'src/app/Services/Clock/clock.service';
 
 import { ClockComponent } from './clock.component';
 
@@ -8,6 +9,7 @@ describe('ClockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [ClockService],
       declarations: [ ClockComponent ]
     })
     .compileComponents();

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RuleService } from 'src/app/Services/Rule/rule.service';
 import { ScheduleService } from 'src/app/Services/Schedule/schedule.service';
 
 @Component({

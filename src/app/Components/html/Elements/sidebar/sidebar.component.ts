@@ -11,8 +11,8 @@ import { UserServiceService } from 'src/app/Services/User/user-service.service';
 })
 export class SidebarComponent implements OnInit {
   
-  user: any;
-  role: any = {}
+  user: any = {};
+  role: any = {};
   body: any;
 
   constructor(private authService: AuthService,
@@ -34,14 +34,16 @@ export class SidebarComponent implements OnInit {
 
   getUser(){
     this.user = JSON.parse(localStorage.getItem('user'));
-    this.body = {
-      email: this.user.email
-    };
-    
-    this.userService.getUserRole(this.body).subscribe(res=>{
-      this.role = res;
-      localStorage.setItem('role',this.role.type);
-    });    
+    if(this.user){
+      this.body = {
+        email: this.user.email
+      };
+      
+      this.userService.getUserRole(this.body).subscribe(res=>{
+        this.role = res;
+        localStorage.setItem('role',this.role.type);
+      });
+    }    
   }
 
   isControlAccessView(){

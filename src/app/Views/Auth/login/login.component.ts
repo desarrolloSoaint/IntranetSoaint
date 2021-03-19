@@ -29,10 +29,9 @@ export class LoginComponent implements OnInit {
     private userService:UserServiceService,
     private tokenService:TokenService,
     private authService: AuthService,
-    private router: Router,
-    private spinnerService:SpinnerService
+    private router: Router
   ) { 
-    this.titles = ['Inicio de Sesion'];
+    this.titles = ['Inicio de Sesión'];
     this.button = {title: "Entrar",size:"btn-lg"};
     this.inputs = [{
       type: 'email',

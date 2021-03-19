@@ -5,7 +5,7 @@ import { TokenService } from '../Token/token.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RoleGuardService implements CanActivate{
+export class AdminGuardService implements CanActivate{
   
   role:any;
 

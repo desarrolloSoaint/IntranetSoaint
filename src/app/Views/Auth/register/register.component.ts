@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     ) {
 
     this.titles = ['Registro'];
-    this.button = {title: "Registrarse",size:"btn-lg"};
+    this.button = {title: "Registrar",size:"btn-lg"};
     this.inputs = [{
       type: 'email',
       name: 'email',

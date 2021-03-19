@@ -1,0 +1,60 @@
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card shadow text-center">
+            <div class="card-header user-color text-white">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <i class="fa fa-door-open fa-4x"></i>
+                    </div>
+                    <div class="col">
+                        <h6>Entrada/Salida</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h5>
+                    <a [routerLink]="['/main/access-control/entry-time']" class="text-primary">Registrar<mdb-icon class="pl-1" fas icon="arrow-alt-circle-right"></mdb-icon></a>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow text-center">
+            <div class="card-header rules-color text-white">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <i class="fa fa-utensils fa-4x"></i>
+                    </div>
+                    <div class="col">
+                        <h6>Almuerzo</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h5>
+                    <a [routerLink]="['/main/access-control/lunch-time']" class="text-primary">Registrar<mdb-icon class="pl-1" fas icon="arrow-alt-circle-right"></mdb-icon></a>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow text-center">
+            <div class="card-header schedules-color text-white">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <i class="fa fa-coffee fa-4x"></i>
+                    </div>
+                    <div class="col">
+                        <h6>Pausa Activa</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h5>
+                    <a [routerLink]="['/main/access-control/active-pause']" class="text-primary pr-2">Diurna<mdb-icon class="pl-1" fas icon="arrow-alt-circle-right"></mdb-icon></a>
+                    <a [routerLink]="['/main/access-control/active-afternoon-pause']" class="text-primary">Tarde<mdb-icon class="pl-1" fas icon="arrow-alt-circle-right"></mdb-icon></a>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>

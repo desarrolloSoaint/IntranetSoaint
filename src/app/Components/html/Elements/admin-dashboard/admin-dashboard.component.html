@@ -1,0 +1,65 @@
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card shadow text-center">
+            <div class="card-header user-color text-white">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <i class="fa fa-user fa-4x"></i>
+                    </div>
+                    <div class="col">
+                        <h3 *ngIf="count_users" class="display-3">{{count_users}}</h3>
+                        <h6>Usuarios</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h5>
+                    <a [routerLink]="['/main/access-control/users-history']" class="text-primary">Ver Usuarios <mdb-icon fas icon="arrow-alt-circle-right"></mdb-icon>
+                    </a>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow text-center">
+            <div class="card-header rules-color text-white">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <i class="fa fa-book-reader fa-4x"></i>
+                    </div>
+                    <div class="col">
+                        <h3 *ngIf="count_rules" class="display-3">{{count_rules}}</h3>
+                        <h6>Reglas</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h5>
+                    <a [routerLink]="['/main/configuration']" class="text-primary">Ver Reglas <mdb-icon fas icon="arrow-alt-circle-right"></mdb-icon>
+                    </a>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow text-center">
+            <div class="card-header schedules-color text-white">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <i class="fa fa-clock fa-4x"></i>
+                    </div>
+                    <div class="col">
+                        <h3 *ngIf="count_schedules" class="display-3">{{count_schedules}}</h3>
+                        <h6>Horarios</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h5>
+                    <a [routerLink]="['/main/configuration/schedules-table']" class="text-primary">Ver Horarios <mdb-icon fas icon="arrow-alt-circle-right"></mdb-icon>
+                    </a>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
