@@ -14,7 +14,6 @@ export class InputTextComponent implements OnInit {
   constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
-
   }
 
   setInputValue(newValue){

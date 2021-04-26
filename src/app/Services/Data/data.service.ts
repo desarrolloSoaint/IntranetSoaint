@@ -21,6 +21,12 @@ export class DataService {
     }
   }
 
+  public clearValues(){
+    this.email = null;
+    this.password = null;
+    this.selectValue = null;
+  }
+
   public getValue(type:string):any {
     if (type=="email"){
       return this.email;  

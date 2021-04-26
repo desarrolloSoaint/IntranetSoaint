@@ -8,7 +8,7 @@
                 placeholder="Escriba el email del usuario">
         </div>
 
-        <div *ngIf="day >= 20" class="col-sm-12 text-center mt-4">
+        <div *ngIf="day <= 20 && data.length != 0" class="col-sm-12 text-center mt-4">
             <app-submit-button [data]="button.export" (click)="exportData()"></app-submit-button>
             <blockquote class="blockquote mt-1">
                 <p class="mb-0">NOTA: Al exportar el historial, se limpia el registro.</p>
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-12">
             <div *ngIf="data.length > 0" class="shadow mb-2 table-responsive history">
-                <table class="table table-hover table-borderless">
+                <table id="excel-table" class="table table-hover table-borderless">
                     <thead>
                         <tr>
                             <th class="text-center" scope="col">Fecha</th>

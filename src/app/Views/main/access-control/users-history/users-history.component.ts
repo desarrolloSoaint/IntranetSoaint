@@ -22,6 +22,7 @@ export class UsersHistoryComponent implements OnInit {
     this.button = {
       export: {title: "Exportar Historial",size:"btn-lg"}
     }
+    this.day = Number(new Date().getDate());
   }
 
   ngOnInit(): void {
@@ -29,7 +30,6 @@ export class UsersHistoryComponent implements OnInit {
       this.data = res,
       this.export_data = res
     });
-    this.day = Number(new Date().getDate());
   }
 
   search(){
@@ -45,8 +45,9 @@ export class UsersHistoryComponent implements OnInit {
   exportData():void{
     let date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
     let file_name = "export-history-";
+    let element = document.getElementById('excel-table');
     file_name = file_name.concat(date.toString()) 
-    this.excelService.exportAsExcelFile(this.export_data,file_name);
+    this.excelService.exportAsExcelFile(element,file_name);
     this.accessService.clearHistory().subscribe(res=>{
       console.log(res)
       this.ngOnInit();

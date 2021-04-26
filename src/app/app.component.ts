@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from './Services/Auth/auth.service';
-import { TokenService } from './Services/Token/token.service';
 import { UserServiceService } from './Services/User/user-service.service';
 
 @Component({
@@ -16,5 +13,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.userService.sessionTime();
   }
 }

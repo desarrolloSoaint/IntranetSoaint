@@ -51,7 +51,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ClockService} from 'src/app/Services/Clock/clock.service';
 import { InterceptorService } from './Services/Interceptor/interceptor.service';
 import { AuthInterceptorService } from './Services/Interceptor/auth-interceptor.service';
-import { RefreshTokenInterceptorService } from './Services/Interceptor/refresh-token-interceptor.service';
+// import { RefreshTokenInterceptorService } from './Services/Interceptor/refresh-token-interceptor.service';
 
 
 
@@ -111,7 +111,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClient,
     {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true},
-    {provide:HTTP_INTERCEPTORS, useClass:RefreshTokenInterceptorService, multi:true},
+    // {provide:HTTP_INTERCEPTORS, useClass:RefreshTokenInterceptorService, multi:true},
     ClockService
   ],
   bootstrap: [AppComponent]

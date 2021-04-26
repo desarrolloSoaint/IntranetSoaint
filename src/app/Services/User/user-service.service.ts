@@ -40,13 +40,12 @@ export class UserServiceService {
   }
 
   sessionTime(){
-    // const timer = JSON.parse(localStorage.getItem('timer'));
-    // if (timer && (Date.now() > timer)) {
+    const timer = JSON.parse(localStorage.getItem('timer'));
+    if (timer && (Date.now() > timer)) {
       this.logout();
       this.tokenService.remove();
       this.authService.changeAuthStatus(false);
       this.router.navigateByUrl('/login')
-      // console.log('Session Expired')
-    // }
+    }
   }
 }

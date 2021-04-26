@@ -9,7 +9,7 @@
                     <div class="mb-3">
                         <app-title [data]="title" class="card-title text-center"></app-title>
                     </div>
-                    <div *ngIf=" title == 'Registro' ">
+                    <ng-container *ngIf=" title == 'Registro' ">
                         <form #RegisterForm=ngForm (ngSubmit)="onSubmit()" class="form-validation">
 
                             <div class="alert alert-danger" [hidden]="!error.email">{{error.email}}</div>
@@ -54,9 +54,9 @@
                             </div>
     
                         </form>
-                    </div>
+                    </ng-container>
 
-                    <div *ngIf=" title == 'Inicio de Sesión' ">
+                    <ng-container *ngIf=" title == 'Inicio de Sesión' ">
                         <form #LoginForm=ngForm (ngSubmit)="onSubmit()" class="form-validation">
 
                             <div class="alert alert-danger" [hidden]="!error.message">{{error.message}}</div>
@@ -85,7 +85,7 @@
                             </div>
 
                         </form>
-                    </div>
+                    </ng-container>
                 </div>
             </div>
         </div>

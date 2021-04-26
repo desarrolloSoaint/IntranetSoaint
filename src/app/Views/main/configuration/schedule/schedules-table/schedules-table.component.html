@@ -40,7 +40,8 @@
                                 <app-submit-button [routerLink]="['/main/configuration/update-schedule',value.id]" [data]="crud_titles.update"></app-submit-button>
                             </td>
                             <td class="button">
-                                <app-submit-button [data]="crud_titles.delete" (click)="deleteScheduleData(value.id)"></app-submit-button>
+                                <app-submit-button [data]="crud_titles.delete" *ngIf="value.status == 'Activo'"></app-submit-button>
+                                <app-submit-button [data]="crud_titles.delete" *ngIf="value.status == 'Inactivo'" (click)="deleteScheduleData(value.id)"></app-submit-button>
                             </td>
                         </tr>
                     </tbody>

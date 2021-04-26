@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { DataService } from 'src/app/Services/Data/data.service';
-import { SpinnerService } from 'src/app/Services/Spinner/spinner.service';
 import { TokenService } from 'src/app/Services/Token/token.service';
 import { UserServiceService } from 'src/app/Services/User/user-service.service';
 
@@ -59,6 +58,7 @@ export class LoginComponent implements OnInit {
   handleResponse(data){
     this.tokenService.handle(data.access_token,data.user);
     this.authService.changeAuthStatus(true);
+    this.dataService.clearValues();
     this.router.navigateByUrl('/main');
   }
 

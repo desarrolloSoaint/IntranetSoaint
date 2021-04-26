@@ -62,6 +62,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm.role_id = this.dataService.getValue("select");
 
     this.userService.register(this.registerForm).subscribe(
+      // data => console.log(data),
+      // error => console.log(error)
       data => this.handleResponse(data),
       error => this.handleError(error)
     );
@@ -70,6 +72,7 @@ export class RegisterComponent implements OnInit {
   handleResponse(data){
     this.tokenService.handle(data.access_token,data.user);
     this.authService.changeAuthStatus(true);
+    this.dataService.clearValues();
     this.router.navigateByUrl('/main');
   }
 
@@ -78,7 +81,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getRolesData();
+    this.getRolesData();    
   }
 
 }

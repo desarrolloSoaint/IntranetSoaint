@@ -12,18 +12,20 @@
         <li>
             <a *ngIf="!isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/entry-time']" class="list-group-item list-group-item-action">Control de Acceso</a>
         </li>
-        <li>
-            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/entry-time']" class="list-group-item list-group-item-action">Hora de Entrada/Salida</a>
-        </li>
-        <li>
-            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/lunch-time']" class="list-group-item list-group-item-action">Hora de Almuerzo</a>
-        </li>
-        <li>
-            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/active-pause']" class="list-group-item list-group-item-action">Pausa Activa Diurna</a>
-        </li>
-        <li>
-            <a *ngIf="isControlAccessView() && role.type == 'Usuario'" [routerLink]="['/main/access-control/active-afternoon-pause']" class="list-group-item list-group-item-action">Pausa Activa Tarde</a>
-        </li>
+        <ng-container *ngIf="isControlAccessView() && role.type == 'Usuario'">
+            <li>
+                <a [routerLink]="['/main/access-control/entry-time']" class="list-group-item list-group-item-action">Hora de Entrada/Salida</a>
+            </li>
+            <li>
+                <a [routerLink]="['/main/access-control/lunch-time']" class="list-group-item list-group-item-action">Hora de Almuerzo</a>
+            </li>
+            <li>
+                <a [routerLink]="['/main/access-control/active-pause']" class="list-group-item list-group-item-action">Pausa Activa Diurna</a>
+            </li>
+            <li>
+                <a [routerLink]="['/main/access-control/active-afternoon-pause']" class="list-group-item list-group-item-action">Pausa Activa Tarde</a>
+            </li>
+        </ng-container>
       </ul>
     </nav>
 
